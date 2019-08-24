@@ -25,6 +25,7 @@ def main(state, data):
 class ConsoleApp(App):
     """ ConsoleApp sub-class of App """
     _input = input
+    _instack = []
     
     def __init__(self, *args, entry=None):
         super().__init__(*args)
@@ -39,8 +40,9 @@ class ConsoleApp(App):
         else:
             self._entry(newstate, None)
         
-    def _pushInput(self, prompt, newstate, newfunc):
-        self._instack.append((prompt, newstate, newfunc))
+    @classmethod
+    def _pushInput(cls, prompt, newstate, newfunc):
+        cls._instack.append((prompt, newstate, newfunc))
         
     def step(self):
         """ periodic processing """
@@ -53,7 +55,7 @@ class ConsoleApp(App):
                 self._routemain(newstate)
             
 def input(prompt, newstate=None, newfunc=None):
-    inval = _input(prompt)
+    ConsoleApp._pushInput(prompt, newstate, newfunc)
  
 
 ConsoleApp()
