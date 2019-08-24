@@ -6,7 +6,10 @@ from ggame import App
 
 
 def main(state, data):
-    """ main function """
+    """ main function 
+    
+        Entry with data = None first time
+    """
     global x
     global y
     if not state:
@@ -32,9 +35,9 @@ class ConsoleApp(App):
     
     def _routemain(self, newstate):
         if not self._entry:
-            main(newstate)
+            main(newstate, None)
         else:
-            self._entry(newstate)
+            self._entry(newstate, None)
         
     def _pushInput(self, prompt, newstate, newfunc):
         self._instack.append((prompt, newstate, newfunc))
