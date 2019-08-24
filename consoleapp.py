@@ -20,6 +20,7 @@ class ConsoleApp(App):
 
     def __init__(self, *args, entry=None):
         super().__init__(args)
+        self.run()
         if not entry:
             main()
         else:
