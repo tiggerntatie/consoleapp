@@ -12,7 +12,6 @@ def main(state, data):
     """
     global x
     global y
-    print("in main", data)
     if not state:
         input("enter x", 1)
     elif state == 1:
@@ -47,7 +46,9 @@ class ConsoleApp(App):
         
     def step(self):
         """ periodic processing """
+        print(ConsoleApp._instack)
         if self._instack:
+            print("stack")
             prompt, newstate, newfunc = self._instack.pop(0)
             inval = self._input(prompt)
             if newfunc:
