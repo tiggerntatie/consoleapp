@@ -34,11 +34,11 @@ class ConsoleApp(App):
         self._entry = entry
         self._routemain(None)
     
-    def _routemain(self, newstate):
+    def _routemain(self, newstate, data=None):
         if not self._entry:
-            main(newstate, None)
+            main(newstate, data)
         else:
-            self._entry(newstate, None)
+            self._entry(newstate, data)
         
     @classmethod
     def _pushInput(cls, prompt, newstate, newfunc):
@@ -46,15 +46,13 @@ class ConsoleApp(App):
         
     def step(self):
         """ periodic processing """
-        print(ConsoleApp._instack)
-        if self._instack:
-            print("stack")
-            prompt, newstate, newfunc = self._instack.pop(0)
-            inval = self._input(prompt)
+        if type(self)._instack:
+            (prompt, newstate, newfunc) = type(self)._instack.pop(0)
+            inval = type(self)._input(prompt)
             if newfunc:
-                newfunc(newstate)
+                newfunc(newstate, inval)
             else:
-                self._routemain(newstate)
+                self._routemain(newstate, inval)
             
 def input(prompt, newstate=None, newfunc=None):
     ConsoleApp._pushInput(prompt, newstate, newfunc)
