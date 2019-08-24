@@ -2,26 +2,6 @@
 
 from ggame import App
 
-   
-
-
-def main(state, data):
-    """ main function 
-    
-        Entry with data = None first time
-    """
-    global x
-    global y
-    if not state:
-        input("enter x ", state=1)
-    elif state == 1:
-        x = data
-        input("enter y ", state=2)
-    else:
-        y = data
-        print(x, y)
-    
-
 class ConsoleApp(App):
     """ ConsoleApp sub-class of App """
     _input = input
@@ -65,5 +45,23 @@ def input(prompt, **kwargs):
     newfunc = kwargs.get('func', None)
     ConsoleApp._pushInput(prompt, newstate, newfunc)
  
-
-ConsoleApp()
+if __name__ == "__main__":
+    global main
+    
+    def main(state, data):
+        """ main function 
+        
+            Entry with data = None first time
+        """
+        global x
+        global y
+        if not state:
+            input("enter x ", state=1)
+        elif state == 1:
+            x = data
+            input("enter y ", state=2)
+        else:
+            y = data
+            print(x, y)
+        
+    ConsoleApp()
