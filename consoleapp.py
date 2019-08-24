@@ -15,18 +15,16 @@ def main():
 
 class ConsoleApp(App):
 
-    def step():
-        print("step")
 
     def __init__(self, *args, entry=None):
-        super().__init__(args)
+        super().__init__(*args)
         self.run()
         if not entry:
             main()
         else:
             entry()
         
-    def step():
+    def step(self):
         """ periodic processing """
         print("step")
 
