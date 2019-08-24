@@ -12,6 +12,7 @@ def main(state, data):
     """
     global x
     global y
+    print("in main", data)
     if not state:
         input("enter x", 1)
     elif state == 1:
