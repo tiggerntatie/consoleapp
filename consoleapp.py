@@ -13,10 +13,10 @@ def main(state, data):
     global x
     global y
     if not state:
-        input("enter x", 1)
+        input("enter x ", state=1)
     elif state == 1:
         x = data
-        input("enter y", 2)
+        input("enter y ", state=2)
     else:
         y = data
         print(x, y)
@@ -54,7 +54,15 @@ class ConsoleApp(App):
             else:
                 self._routemain(newstate, inval)
             
-def input(prompt, newstate=None, newfunc=None):
+def input(prompt, **kwargs):
+    """ input 
+    
+        optional keyword arguments
+        state = value to be passed into next function (default main entry)
+        func = next function to execute (will be passed state and input result)
+    """
+    newstate = kwargs.get('state', None)
+    newfunc = kwargs.get('func', None)
     ConsoleApp._pushInput(prompt, newstate, newfunc)
  
 
