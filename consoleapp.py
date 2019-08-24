@@ -7,11 +7,11 @@ class ConsoleApp(App):
     _input = input
     _instack = []
     
-    def __init__(self, *args, **kwargs):
+    def __init__(self, entry=None):
         super().__init__(*args)
         self._instack = []
         self.run()
-        self._entry = kwargs.get('entry', None)
+        self._entry = entry
         self._routemain(None)
     
     def _routemain(self, newstate, data=None):
