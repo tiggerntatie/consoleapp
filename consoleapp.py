@@ -63,5 +63,21 @@ if __name__ == "__main__":
         else:
             y = data
             print(x, y)
+    
+    A = None
+    B = None
+    
+    def step1(state, data):
+        input("enter A ", func=step2)
+    
+    def step2(state, data):
+        global A
+        A = data
+        input("enter B", func=step3)
         
-    ConsoleApp()
+    def step3(state, data):
+        global B
+        B = data
+        print(A, B)
+        
+    ConsoleApp(step1)
