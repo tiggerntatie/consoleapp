@@ -8,7 +8,7 @@ class ConsoleApp(App):
     _instack = []
     
     def __init__(self, entry=None):
-        super().__init__(*args)
+        super().__init__()
         self._instack = []
         self.run()
         self._entry = entry
