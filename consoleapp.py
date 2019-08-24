@@ -26,7 +26,7 @@ class ConsoleApp(App):
         
     def step(self):
         """ periodic processing """
-        print("step")
+        pass
 
 
 ConsoleApp()
