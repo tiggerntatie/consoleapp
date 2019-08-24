@@ -5,11 +5,29 @@ from ggame import App
 def gginput(prompt):
     return input(prompt)
 
-def step():
-    """ periodic processing """
-    
+
+def main():
+    """ main function """
     x = gginput("enter x")
     y = gginput("enter y")
     print(x, y)
+    
 
-App().run(step)
+class ConsoleApp(App):
+
+    def step():
+        print("step")
+
+    def __init__(self, *args, entry=None):
+        super().__init__(args)
+        if not entry:
+            main()
+        else:
+            entry()
+        
+    def step():
+        """ periodic processing """
+        print("step")
+
+
+ConsoleApp()
